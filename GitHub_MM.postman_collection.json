@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "f9ff1e80-bf85-467b-a969-aec121a6e7eb",
+		"name": "GitHub_MM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f16f12a2-1496-4115-aa6e-c71301803d50",
+						"type": "text/javascript",
+						"exec": [
+							"var responseCode = pm.response.code;",
+							"",
+							"",
+							"pm.test(\"Should get 404 OK\", function() {",
+							"   pm.expect(responseCode).to.eql(404); ",
+							"   ",
+							"  ",
+							"   ",
+							"  ",
+							"   ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/users/{id}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get gists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3bcbb62f-9594-499f-8e46-a975de26b9bd",
+						"type": "text/javascript",
+						"exec": [
+							"var responseBody = pm.response.json();",
+							"var Id = pm.environment.get(Id);",
+							"",
+							"",
+							"// ",
+							"pm.test(\"Should userId equal previously set\", function() {",
+							"    pm.expect(responseBody.id).to.eql(Id);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/{id}/gists",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"{id}",
+						"gists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api.github.com",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "api.github.com",
+					"host": [
+						"api",
+						"github",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
